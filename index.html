@@ -182,7 +182,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;align-items:cen
 .philosophy-item p{font-size:12px;line-height:1.8;color:var(--text-muted);font-weight:300}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:56px 56px 36px;display:grid;grid-template-columns:2.5fr 1fr 1fr;gap:48px}
+footer{border-top:1px solid var(--border);padding:56px 56px 36px;display:grid;grid-template-columns:1.7fr 0.6fr 0.6fr;gap:0 48px}
 .footer-brand .logo-lockup{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .footer-logo-img{height:24px;width:24px;object-fit:contain;opacity:.6}
 .footer-logo-text{font-family:var(--font-ui);font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--text-muted)}
@@ -2053,6 +2053,32 @@ function stopExploreScroll() {
           positions.push({ x: px, y: py });
           px += dirs[dir][0];
           py += dirs[dir][1];
+        }
+      }
+    }
+
+
+    // Proximity dedup: prevent same image from appearing within ~5 cells of itself
+    var MIN_PROX = CW * 5;
+    for (var di = 0; di < allImages.length; di++) {
+      if (!positions[di]) continue;
+      for (var dj = 0; dj < di; dj++) {
+        if (!positions[dj]) continue;
+        if (allImages[di].img !== allImages[dj].img) continue;
+        var ddx = positions[di].x - positions[dj].x;
+        var ddy = positions[di].y - positions[dj].y;
+        if (Math.sqrt(ddx*ddx + ddy*ddy) < MIN_PROX) {
+          // Swap di with a farther candidate
+          for (var dk = di + 1; dk < allImages.length; dk++) {
+            if (!positions[dk] || allImages[dk].img === allImages[dj].img) continue;
+            var ddx2 = positions[dk].x - positions[dj].x;
+            var ddy2 = positions[dk].y - positions[dj].y;
+            if (Math.sqrt(ddx2*ddx2 + ddy2*ddy2) >= MIN_PROX) {
+              var dtmp = allImages[di]; allImages[di] = allImages[dk]; allImages[dk] = dtmp;
+              break;
+            }
+          }
+          break;
         }
       }
     }
