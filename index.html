@@ -636,6 +636,11 @@ body::after{content:'';position:fixed;inset:0;z-index:1;background-image:url("da
     ul.nav-links {
       display: flex;
     }
+    ul.nav-links li:nth-child(2),
+    ul.nav-links li:nth-child(5),
+    ul.nav-links li:nth-child(6) {
+      display: block !important;
+    }
     ul.nav-links li:not(:nth-child(2)):not(:nth-child(5)):not(:nth-child(6)) {
       display: none !important; 
     }
