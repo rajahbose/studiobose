@@ -3,7 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>studio|BOSE — Architecture</title>
+<title>Modern Residential & Commercial Architecture in Santa Fe, NM | studio|BOSE</title>
+<meta name="description" content="studio|BOSE is a premier architectural design firm in Santa Fe, New Mexico specializing in modern residential, commercial, and creative conceptual spaces built for the Southwest horizon.">
+<meta name="keywords" content="Architect Santa Fe, Modern Architecture NM, Residential Architect New Mexico, Commercial Design Santa Fe, studio BOSE, Adobe Design, Sustainable Architecture">
+<meta name="author" content="studio|BOSE">
+<meta property="og:title" content="Modern Architecture in Santa Fe, NM | studio|BOSE">
+<meta property="og:description" content="Explore our portfolio of cutting-edge residential and commercial architecture deeply rooted in the New Mexico landscape.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://studiobose.com/">
+<meta property="og:image" content="https://studiobose.com/images/projects/desert-view/desert-view-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ArchitecturalFirm",
+  "name": "studio|BOSE",
+  "image": "https://studiobose.com/images/projects/desert-view/desert-view-01.jpg",
+  "@id": "https://studiobose.com/",
+  "url": "https://studiobose.com/",
+  "telephone": "",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santa Fe",
+    "addressRegion": "NM",
+    "postalCode": "87501",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.6869,
+    "longitude": -105.9378
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "sameAs": []
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -564,6 +609,7 @@ function showPage(p){
   var mainNav=document.getElementById('mainNav');
   if(mainNav){mainNav.classList.toggle('page-projects', p==='projects');}
   window.scrollTo(0,0);
+  if (history.replaceState && p !== 'projects') { history.replaceState(null, null, '#' + p); }
   if(typeof buildFeatured==='function'&&document.getElementById('featuredGrid')&&document.getElementById('featuredGrid').innerHTML==='') buildFeatured();
   if(p==='links'){ buildLinksHero(); }
   if(p==='about'){ buildAboutHero(); }
@@ -583,12 +629,12 @@ buildContent();
 
 
 <!-- ═══ HOME ═══ -->
-<div id="page-home" class="page active">
+<main id="page-home" class="page active">
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid-img" id="heroGrid"><div></div><div></div><div></div><div></div></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Licensed Architect &amp; Design Studio Based in Santa Fe, NM</div>
+      <h1 class="hero-eyebrow">Licensed Architect &amp; Design Studio Based in Santa Fe, NM</h1>
       <div class="hero-cta">
         <button class="btn-primary" onclick="showPage('projects')">View Projects</button>
         <button class="btn-ghost" onclick="showPage('about')">Studio <span class="arrow">→</span></button>
@@ -634,10 +680,10 @@ buildContent();
     <div class="footer-col"><h4>Contact</h4><a href="mailto:rajah@studiobose.com">rajah@studiobose.com</a><a>212 Lorenzo Ln, Santa Fe, NM 87501</a></div>
   </footer>
   <div class="footer-bottom"><p>© 2026 studio|BOSE. All rights reserved.</p></div>
-</div>
+</main>
 
 <!-- ═══ PROJECTS ═══ -->
-<div id="page-projects" class="page">
+<main id="page-projects" class="page">
   <div class="projects-layout">
     <div class="projects-sidebar">
       <div class="sidebar-filters">
@@ -653,7 +699,7 @@ buildContent();
 </div>
 
 <!-- ═══ STUDIO (ABOUT) ═══ -->
-<div id="page-about" class="page">
+<main id="page-about" class="page">
   <div class="about-hero">
     <img id="aboutHeroBg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
     <div class="about-hero-overlay"></div>
@@ -687,10 +733,10 @@ buildContent();
     <div class="footer-col"><h4>Contact</h4><a href="mailto:rajah@studiobose.com">rajah@studiobose.com</a><a>212 Lorenzo Ln, Santa Fe, NM 87501</a></div>
   </footer>
   <div class="footer-bottom"><p>© 2026 studio|BOSE. All rights reserved.</p></div>
-</div>
+</main>
 
 <!-- ═══ TECHNOLOGY ═══ -->
-<div id="page-software" class="page">
+<main id="page-software" class="page">
   <div class="tech-page-inner">
     <div class="tech-page-header">
       <div class="section-label">Technology &amp; Process</div>
@@ -1281,15 +1327,15 @@ function buildContent() {
             var pos = cycle % 3;
             if (pos === 0) {
               // Full-width row
-              html += '<div class="ph-wrap" style="grid-column:1/3"><img src="' + remaining[i] + '" style="width:100%;aspect-ratio:16/9;object-fit:cover"></div>';
+              html += '<div class="ph-wrap" style="grid-column:1/3"><img src="' + remaining[i] + '" alt="studio|BOSE - ' + p.title + ' - Modern Architecture Image ' + (i+2) + '" style="width:100%;aspect-ratio:16/9;object-fit:cover"></div>';
               i++;
             } else if (pos === 1) {
               // First half of pair
-              html += '<div class="ph-wrap"><img src="' + remaining[i] + '" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>';
+              html += '<div class="ph-wrap"><img src="' + remaining[i] + '" alt="studio|BOSE - ' + p.title + ' - Modern Architecture Image ' + (i+2) + '" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>';
               i++;
               // Second half of pair (next image, or empty)
               if (i < remaining.length) {
-                html += '<div class="ph-wrap"><img src="' + remaining[i] + '" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>';
+                html += '<div class="ph-wrap"><img src="' + remaining[i] + '" alt="studio|BOSE - ' + p.title + ' - Modern Architecture Image ' + (i+2) + '" style="width:100%;aspect-ratio:4/3;object-fit:cover"></div>';
                 i++;
                 cycle++; // consumed 2 halves, advance cycle by 1 more
               } else {
@@ -1327,6 +1373,7 @@ function selectProject(id) {
   var next = pc.querySelector('#proj-' + id);
   if (!next || current === next) return;
 
+  if (history.replaceState) { history.replaceState(null, null, '#' + id); }
   // Scroll to top immediately on click
   scrollProjectsToTop();
 
@@ -1403,6 +1450,20 @@ buildMaterialsFilter();
 buildFeatured();
 buildHeroGrid();
 buildLinksHero();
+
+function handleHash() {
+  var hash = window.location.hash.replace('#', '');
+  if (!hash) return;
+  var isProj = projects.some(function(p) { return p.id === hash; });
+  if (isProj) {
+    showPage('projects');
+    setTimeout(function() { selectProject(hash); }, 50);
+  } else if (['home', 'projects', 'explore', 'software', 'about', 'links'].indexOf(hash) !== -1) {
+    showPage(hash);
+  }
+}
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('DOMContentLoaded', function() { setTimeout(handleHash, 100); });
 
 var _lightboxImgs = [];
 function openLightbox(projectId, idx) {
@@ -1566,12 +1627,12 @@ function stopExploreScroll() {
 
 
 <!-- ═══ EXPLORE ═══ -->
-<div id="page-explore" class="page">
+<main id="page-explore" class="page">
   <div class="explore-grid" id="exploreGrid"></div>
-</div>
+</main>
 
 <!-- ═══ LINKS ═══ -->
-<div id="page-links" class="page">
+<main id="page-links" class="page">
   <div class="links-hero">
     <img id="linksHeroBg">
     <div class="links-hero-overlay"></div>
@@ -1635,7 +1696,7 @@ function stopExploreScroll() {
       </a>
     </div>
   </div>
-</div>
+</main>
 
 </body>
 </html>
