@@ -646,12 +646,22 @@ body::after{content:'';position:fixed;inset:0;z-index:1;background-image:url("da
     }
 
     .hex-tile-inner.selected {
-      border: 3px solid var(--accent);
       transform: scale(1.05);
     }
-    .hex-tile-inner.selected img {
-      opacity: 1;
-      filter: brightness(0.6);
+    .hex-overlay {
+      position: absolute;
+      inset: -1px;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s cubic-bezier(0.3, 0, 0.2, 1);
+      z-index: 5;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hex-tile-inner.selected .hex-overlay {
+      background: rgba(0,0,0,0.5);
+      box-shadow: inset 0 0 0 3px var(--accent);
     }
     .hex-front-title {
        position: relative;
@@ -2098,6 +2108,7 @@ function stopExploreScroll() {
         '<div class="hex-tile-inner">' +
           '<div class="hex-face hex-front">' +
              imgHtml +
+            '<div class="hex-overlay"></div>' +
             '<div class="hex-front-title">' + data.title + '</div>' +
           '</div>' +
         '</div>';
