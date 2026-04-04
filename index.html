@@ -523,8 +523,8 @@ body::after{content:'';position:fixed;inset:0;z-index:1;background-image:url("da
 /* CREATIVE GALLERY TEMPLATE */
 .project-gallery{padding:40px 56px 80px}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.gallery-item{overflow:hidden;cursor:crosshair;aspect-ratio:1}
-.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease;transform-origin:50% 50%}
+.gallery-item{overflow:hidden;cursor:default;aspect-ratio:1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
 
 /* PROJECT LIGHTBOX */
 #project-lightbox {
@@ -570,7 +570,7 @@ body::after{content:'';position:fixed;inset:0;z-index:1;background-image:url("da
 .spec-row-materials{align-items:flex-start}
 .spec-val-materials{text-align:right;font-size:11px;line-height:1.6}
 
-.gallery-item:hover img{transform:scale(2)}
+/* .gallery-item:hover img{transform:scale(2)} */
 
 /* ═══ EXPLORE PAGE ═══ */
 #page-explore{padding:0;background:var(--bg);overflow-y:auto;height:calc(100vh - 68px)}
@@ -1390,11 +1390,37 @@ const projects = [
     concepts:"Digital Fabrication, Ceramic Printing, Modular Living, Biomimmicry, Earthen Material",
     colors:["ph-a","ph-b","ph-c"],
     imgs:[
-      "images/projects/wild-and-domestic/wild-and-domestic-01.jpg",
-      "images/projects/wild-and-domestic/wild-and-domestic-02.jpg",
-      "images/projects/wild-and-domestic/wild-and-domestic-03.jpg",
-      "images/projects/wild-and-domestic/wild-and-domestic-04.jpg",
-      "images/projects/wild-and-domestic/wild-and-domestic-05.jpg"
+      "images/projects/wild-domestic/wild-domestic-01.jpg",
+      "images/projects/wild-domestic/wild-domestic-02.jpg",
+      "images/projects/wild-domestic/wild-domestic-03.jpg",
+      "images/projects/wild-domestic/wild-domestic-04.jpg",
+      "images/projects/wild-domestic/wild-domestic-05.jpg",
+      "images/projects/wild-domestic/wild-domestic-06.jpg",
+      "images/projects/wild-domestic/wild-domestic-07.jpg",
+      "images/projects/wild-domestic/wild-domestic-08.jpg",
+      "images/projects/wild-domestic/wild-domestic-09.jpg",
+      "images/projects/wild-domestic/wild-domestic-10.jpg",
+      "images/projects/wild-domestic/wild-domestic-11.jpg",
+      "images/projects/wild-domestic/wild-domestic-12.jpg",
+      "images/projects/wild-domestic/wild-domestic-13.jpg",
+      "images/projects/wild-domestic/wild-domestic-14.jpg",
+      "images/projects/wild-domestic/wild-domestic-15.jpg",
+      "images/projects/wild-domestic/wild-domestic-16.jpg",
+      "images/projects/wild-domestic/wild-domestic-17.jpg",
+      "images/projects/wild-domestic/wild-domestic-18.jpg",
+      "images/projects/wild-domestic/wild-domestic-19.jpg",
+      "images/projects/wild-domestic/wild-domestic-20.jpg",
+      "images/projects/wild-domestic/wild-domestic-21.jpg",
+      "images/projects/wild-domestic/wild-domestic-22.jpg",
+      "images/projects/wild-domestic/wild-domestic-23.jpg",
+      "images/projects/wild-domestic/wild-domestic-24.jpg",
+      "images/projects/wild-domestic/wild-domestic-25.jpg",
+      "images/projects/wild-domestic/wild-domestic-26.jpg",
+      "images/projects/wild-domestic/wild-domestic-27.jpg",
+      "images/projects/wild-domestic/wild-domestic-28.jpg",
+      "images/projects/wild-domestic/wild-domestic-29.jpg",
+      "images/projects/wild-domestic/wild-domestic-30.jpg",
+      "images/projects/wild-domestic/wild-domestic-31.jpg"
     ],
     materials:"-",
     desc1:"",
@@ -1917,16 +1943,7 @@ function buildLinksHero() {
   bg.src = all[Math.floor(Math.random() * all.length)];
 }
 
-document.addEventListener('mousemove', function(e) {
-  var item = e.target.closest && e.target.closest('.gallery-item');
-  if (!item) return;
-  var img = item.querySelector('img');
-  if (!img) return;
-  var rect = item.getBoundingClientRect();
-  var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-  var y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-  img.style.transformOrigin = x + '% ' + y + '%';
-});
+
 
 function buildExplore() {
   var grid = document.getElementById('exploreGrid');
